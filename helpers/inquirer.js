@@ -1,5 +1,5 @@
+// Request Packages
 const inquirer = require("inquirer");
-
 require("colors");
 
 const menuOpts = [
@@ -22,7 +22,7 @@ const menuOpts = [
       },
     ],
   },
-];
+]; //menuOpts
 
 const crearTarea = [
   {
@@ -30,7 +30,7 @@ const crearTarea = [
     name: "enter",
     message: `Presione ${"enter".green} para continuar`,
   },
-];
+]; //crearTarea
 
 const inquirerMenu = async () => {
   // console.clear();
@@ -41,7 +41,7 @@ const inquirerMenu = async () => {
   const { opcion } = await inquirer.prompt(menuOpts);
 
   return opcion;
-};
+}; // inquirerMenu
 
 const pausa = async () => {
   const pausa = await inquirer
@@ -50,7 +50,7 @@ const pausa = async () => {
     .catch((err) => err);
 
   return pausa;
-};
+}; // pausa
 
 const leerInput = async (message) => {
   const question = [
@@ -100,7 +100,7 @@ const listadoTareasBorrar = async (tareas = []) => {
   const { id } = await inquirer.prompt(preguntas);
 
   return id;
-};
+}; // Listar tareas a borrar.
 
 const confirmar = async (message) => {
   const question = [
@@ -114,7 +114,7 @@ const confirmar = async (message) => {
   const { ok } = await inquirer.prompt(question);
 
   return ok;
-};
+}; // Confirmar selección.
 
 const mostrarListadoChecklist = async (tareas = []) => {
   const choices = tareas.map((tarea, i) => {

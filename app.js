@@ -2,25 +2,28 @@ const { leerInput, inquirerMenu, pausa } = require("./helpers/inquirer");
 const Busquedas = require("./models/busquedas");
 
 const main = async () => {
+  /* Creamos instancia  */
   const busquedas = new Busquedas();
 
   let opt;
 
   do {
+    // Mostramos el menu.
     opt = await inquirerMenu();
 
+    // Pasamos la opción
     switch (opt) {
       case 1:
-        // Mostrar mensaje
+        // Pedir ciudad
         const lugar = await leerInput("Ciudad: ");
         console.log(lugar);
-        // Buscar mostrar lugares
+        // TODO: Buscar lugares
 
-        // Seleccionar el lugar
+        // TODO: Seleccionar lugar
 
-        // Obtener info
+        // TODO: Obtener info clima|
 
-        // Mostrar resultados
+        // TODO: Mostrar resultados
         console.log(`\n Información de la ciudad\n`.green);
         console.log("Ciudad: ", "datos");
         console.log("Latitud: ", "datos");
