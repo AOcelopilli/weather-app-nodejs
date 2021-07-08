@@ -10,6 +10,8 @@ class Busquedas {
     this.leerDB();
   }
 
+  /* METODOS GET */
+
   get paramsMapBox() {
     return {
       access_token: process.env.MAPBOX_KEY,
@@ -36,15 +38,17 @@ class Busquedas {
     };
   }
 
-  /* Metodo asincrono porque se hará una peticion HTTP */
+  /* METODOS */
+  /* Metodo asincrono para petición HTTP */
   async ciudad(lugar = "") {
     try {
-      // petición http
+      // Se crea la instancia de axios
       const instance = axios.create({
         baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json`,
         params: this.paramsMapBox,
       });
 
+      // Se ejecuta el metodo get de la libreria
       const resp = await instance.get();
 
       return resp.data.features.map((lugar) => ({
@@ -82,13 +86,14 @@ class Busquedas {
   }
 
   agregarHistorial(lugar = "") {
-    // TODO: Prevenir duplicidad.
+    // Preguntamos si existe el lugar en el historial.
     if (this.historial.includes(lugar.toLocaleLowerCase())) {
       return;
     }
 
-    this.historial = this.historial.splice(0, 5);
-
+    // Tomamos los primeros 5 del arreglo
+    this.historial = this.historial.splice(0, 4);
+    // Agregamos el más reciente lugar.
     this.historial.unshift(lugar);
 
     // Grabar en DB.
@@ -113,11 +118,7 @@ class Busquedas {
 
     const data = JSON.parse(info);
 
-<<<<<<< HEAD
-    return []; // retornar los lugares.
-=======
     this.historial = data.historial;
->>>>>>> 5caab8d40dd8f6bf451ac04e774d1e972d4455e4
   }
 }
 

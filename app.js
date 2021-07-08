@@ -20,38 +20,28 @@ const main = async () => {
     // Pasamos la opción
     switch (opt) {
       case 1:
-<<<<<<< HEAD
-        // Pedir ciudad
-        const lugar = await leerInput("Ciudad: ");
-        console.log(lugar);
-        // TODO: Buscar lugares
-
-        // TODO: Seleccionar lugar
-
-        // TODO: Obtener info clima|
-
-        // TODO: Mostrar resultados
-=======
         // Mostrar mensaje
         const termino = await leerInput("Ciudad: ");
 
         const lugares = await busquedas.ciudad(termino);
         // Buscar mostrar lugares
         const id = await listadoLugares(lugares);
+
         if (id === "0") continue;
 
+        // Si el ID seleccionado se encuentra en lugares
         const lugarSel = lugares.find((l) => l.id === id);
-        // Guardar en DB
 
+        // Guardar en DB
         busquedas.agregarHistorial(lugarSel.nombre);
 
-        // Seleccionar el lugar
+        // Obtener datos del lugar.
         const clima = await busquedas.climaLugar(lugarSel.lat, lugarSel.lng);
-        // Obtener info
+
         const { desc, min, max, temp } = clima;
         // Mostrar resultados
         console.clear();
->>>>>>> 5caab8d40dd8f6bf451ac04e774d1e972d4455e4
+
         console.log(`\n Información de la ciudad\n`.green);
         console.log("Ciudad: ", lugarSel.nombre);
         console.log("Latitud: ", lugarSel.lat);

@@ -97,6 +97,7 @@ const listadoLugares = async (lugares = []) => {
     },
   ];
 
+  // Retornamos el ID del valor seleccionado.
   const { id } = await inquirer.prompt(preguntas);
 
   return id;
